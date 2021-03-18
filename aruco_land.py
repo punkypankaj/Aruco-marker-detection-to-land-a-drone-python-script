@@ -25,11 +25,6 @@ vehicle = connect(args.connect, baud=921600, wait_ready=True)
 
 
 
-
-
-
-
-
 # Function to arm and then takeoff to a user specified altitude
 def arm_and_takeoff(aTargetAltitude):
 
@@ -60,7 +55,7 @@ def arm_and_takeoff(aTargetAltitude):
       break
     time.sleep(1)
 
-
+#Takeoff height in meters
 arm_and_takeoff(8)
 
 print("Take off complete")
@@ -93,8 +88,10 @@ while(True):
             cv2.line(frame_markers, tuple(points[0]), tuple(points[3]), [100, 0, 100])
 
   #  cv2.imshow('frame_marker',frame_markers)
+  #  "53" is the index id of that particular Aruco Marker ( tetsed with 4X4 matrix marker)
     if (ids==53):
        print("Now let's land")
+        
        vehicle.mode = VehicleMode("LAND")
 
        break
